@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Φύλλα Εργασίας</title>
-
 <style>
 body{
     margin:0;
@@ -15,29 +13,30 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
+    padding:20px;
+    box-sizing:border-box;
 }
-
 .container{
     text-align:center;
+    width:100%;
+    max-width:900px;
 }
-
 h1{
     color:#243b55;
     margin-bottom:10px;
+    font-size:2.2rem;
 }
-
 .subtitle{
     color:#666;
     margin-bottom:40px;
+    font-size:1.1rem;
 }
-
 .cards{
     display:flex;
     gap:25px;
     flex-wrap:wrap;
     justify-content:center;
 }
-
 .card{
     width:220px;
     height:220px;
@@ -45,70 +44,57 @@ h1{
     border-radius:24px;
     text-decoration:none;
     color:#243b55;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
     transition:
         transform 0.35s ease,
         box-shadow 0.35s ease,
         background 0.35s ease;
 }
-
 .card:hover{
     transform:translateY(-10px) scale(1.03);
-
-    box-shadow:
-        0 20px 40px rgba(0,0,0,0.15);
-
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
     background:linear-gradient(135deg,#ffffff,#eef3ff);
 }
-
 .icon{
     font-size:55px;
     margin-bottom:20px;
-
     transition:transform 0.35s ease;
+    display:flex;
+    gap:4px;
 }
-
 .card:hover .icon{
-    transform:scale(1.2) rotate(5deg);
+    transform:scale(1.15) rotate(5deg);
 }
-
 .card h3{
     margin:0;
     line-height:1.4;
-    font-size:1.3rem;
+    font-size:1.2rem;
+    font-weight:600;
 }
 </style>
 </head>
-
 <body>
-  <h1>📚 Φύλλα Εργασίας</h1>
-  <p class="sub">Επιλέξτε κατηγορία</p>
-
-  <div class="cards">
-
-    <a class="card" href="pdfs/fylloergasias.pdf" target="_blank">
-      <div class="icon">📄</div>
-      <div class="label">Φύλλο Εργασίας<br>Β' Γυμνασίου</div>
-    </a>
-    <a href="pdfs/bg-epanaliptiko.pdf" class="card" target="_blank">
-    <div class="icon icon-stack">
-        <span class="base">📝</span>
-        <span class="overlay">🧠</span>
+  <div class="container">
+    <h1>📚 Φύλλα Εργασίας</h1>
+    <p class="subtitle">Επιλέξτε κατηγορία</p>
+    <div class="cards">
+      <a class="card" href="pdfs/fylloergasias.pdf" target="_blank">
+        <div class="icon">📄</div>
+        <h3>Φύλλο Εργασίας<br>Β' Γυμνασίου</h3>
+      </a>
+      <a class="card" href="pdfs/bg-epanaliptiko.pdf" target="_blank">
+        <div class="icon">📝🧠</div>
+        <h3>Β+Γ<br>Επαναληπτικό</h3>
+      </a>
+      <a class="card" href="odiki-asfaleia/index.html">
+        <div class="icon">🚗</div>
+        <h3>Οδική<br>Ασφάλεια</h3>
+      </a>
     </div>
-    <div class="label">Β+Γ<br>Επαναληπτικό</div>
-</a>
-    <a class="card" href="odiki-asfaleia/index.html">
-      <div class="icon">🚗</div>
-      <div class="label">Οδική<br>Ασφάλεια</div>
-    </a>
-
   </div>
 </body>
 </html>
