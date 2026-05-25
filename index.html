@@ -1,78 +1,119 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <title>Φύλλα Εργασίας</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 40px 20px;
-    }
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 10px;
-      font-size: 1.8em;
-      text-align: center;
-    }
-    p.sub {
-      color: #666;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .cards {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-      padding: 36px 32px;
-      text-align: center;
-      width: 220px;
-      text-decoration: none;
-      color: #2c3e50;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-    .card .icon { font-size: 2.8em; margin-bottom: 14px; }
-    .card .label { font-size: 1em; font-weight: bold; line-height: 1.4; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Φύλλα Εργασίας</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background:#f4f6fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    text-align:center;
+}
+
+h1{
+    color:#243b55;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:40px;
+}
+
+.cards{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card{
+    width:220px;
+    height:220px;
+    background:white;
+    border-radius:24px;
+    text-decoration:none;
+    color:#243b55;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.15);
+
+    background:linear-gradient(135deg,#ffffff,#eef3ff);
+}
+
+.icon{
+    font-size:55px;
+    margin-bottom:20px;
+
+    transition:transform 0.35s ease;
+}
+
+.card:hover .icon{
+    transform:scale(1.2) rotate(5deg);
+}
+
+.card h3{
+    margin:0;
+    line-height:1.4;
+    font-size:1.3rem;
+}
+</style>
 </head>
+
 <body>
-  <h1>📚 Φύλλα Εργασίας</h1>
-  <p class="sub">Επιλέξτε κατηγορία</p>
 
-  <div class="cards">
+<div class="container">
 
-    <a class="card" href="pdfs/fylloergasias.pdf" target="_blank">
-      <div class="icon">📄</div>
-      <div class="label">Φύλλο Εργασίας<br>Β' Γυμνασίου</div>
-    </a>
-    <a href="pdfs/bg-epanaliptiko.pdf" class="card" target="_blank">
-    <div class="icon icon-stack">
-        <span class="base">📝</span>
-        <span class="overlay">🧠</span>
+    <h1>📚 Φύλλα Εργασίας</h1>
+    <div class="subtitle">Επιλέξτε κατηγορία</div>
+
+    <div class="cards">
+
+        <a href="b-gymnasiou.html" class="card">
+            <div class="icon">📄</div>
+            <h3>Φύλλο Εργασίας<br>Β' Γυμνασίου</h3>
+        </a>
+
+        <a href="road-safety.html" class="card">
+            <div class="icon">🚗</div>
+            <h3>Οδική<br>Ασφάλεια</h3>
+        </a>
+
+        <a href="bg-epanaliptiko.html" class="card">
+            <div class="icon">📝</div>
+            <h3>Β+Γ<br>Επαναληπτικό</h3>
+        </a>
+
     </div>
-    <div class="label">Β+Γ<br>Επαναληπτικό</div>
-</a>
-    <a class="card" href="odiki-asfaleia/index.html">
-      <div class="icon">🚗</div>
-      <div class="label">Οδική<br>Ασφάλεια</div>
-    </a>
 
-  </div>
+</div>
+
 </body>
 </html>
