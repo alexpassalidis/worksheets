@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Διαδραστικό Φύλλο Εργασίας Μουσικής</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<style>
+
+body{
+    background:#eef2f7;
+    font-family:'Segoe UI',sans-serif;
+    color:#2d3436;
+    padding:30px;
+}
+
+.container-box{
+    max-width:1200px;
+    margin:auto;
+}
+
+.header{
+    background:linear-gradient(135deg,#1f2937,#374151);
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    margin-bottom:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.header h1{
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.section{
+    background:white;
+    border-radius:22px;
+    padding:35px;
+    margin-bottom:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    border:1px solid #e5e7eb;
+    transition:0.3s;
+}
+
+.section:hover{
+    transform:translateY(-2px);
+}
+
+.section-title{
+    font-size:1.5rem;
+    font-weight:700;
+    margin-bottom:20px;
+    color:#1f2937;
+}
+
+.timeline{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.timeline-item{
+    background:#374151;
+    color:white;
+    padding:15px 20px;
+    border-radius:12px;
+    margin:10px;
+    cursor:grab;
+    transition:0.3s;
+    user-select:none;
+}
+
+.timeline-item:hover{
+    background:#111827;
+    transform:translateY(-3px);
+}
+
+.dropzone{
+    border:2px dashed #9ca3af;
+    border-radius:12px;
+    min-height:60px;
+    padding:15px;
+    margin-bottom:12px;
+    background:#f9fafb;
+}
+
+input[type=text]{
+    border-radius:10px !important;
+    padding:12px !important;
+}
+
+
+.matching-item{
+display:flex;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+
+    background:#f3f4f6;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.correct{
+    border:2px solid #10b981 !important;
+    background:#ecfdf5 !important;
+}
+
+.wrong{
+    border:2px solid #ef4444 !important;
+    background:#fef2f2 !important;
+}
+
+.instrument{
+    display:inline-block;
+    padding:12px 18px;
+    margin:8px;
+    border-radius:12px;
+    background:#374151;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.instrument:hover{
+    background:#111827;
+}
+
+.instrument.selected{
+    background:#2563eb;
+}
+
+button{
+    border-radius:12px !important;
+    padding:12px 20px !important;
+    font-weight:600 !important;
+}
+
+.score-box{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#111827;
+    color:white;
+    padding:15px 20px;
+    border-radius:14px;
+    z-index:999;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+textarea{
+    border-radius:12px !important;
+}
+
+.footer{
+    text-align:center;
+    color:#6b7280;
+    margin-top:40px;
+}
+
+.badge-custom{
+    background:#dbeafe;
+    color:#1e3a8a;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="score-box">
+    Score: <span id="score">0</span>/23
+</div>
+
+<div class="container-box">
+
+    <div class="header text-center">
+        <h1>ΔΙΑΔΡΑΣΤΙΚΟ ΦΥΛΛΟ ΕΡΓΑΣΙΑΣ ΜΟΥΣΙΚΗΣ</h1>
+
+        <br>
+
+        <span class="badge-custom">Όνομα: ____________________</span>
+        <span class="badge-custom">Τμήμα: ____________________</span>
+    </div>
+
+    <div class="section">
+        <div class="section-title">1. Ιστορικές Περίοδοι</div>
+
+        <p>Σύρε τις περιόδους στη σωστή χρονολογική σειρά.</p>
+
+        <div class="timeline">
+            <div class="timeline-item" draggable="true">Μπαρόκ</div>
+            <div class="timeline-item" draggable="true">Ρομαντισμός</div>
+            <div class="timeline-item" draggable="true">Μεσαίωνας</div>
+            <div class="timeline-item" draggable="true">Κλασική</div>
+            <div class="timeline-item" draggable="true">Σύγχρονη</div>
+        </div>
+
+        <br>
+
+        <div class="dropzone" data-answer="Μεσαίωνας">1.</div>
+        <div class="dropzone" data-answer="Μπαρόκ">2.</div>
+        <div class="dropzone" data-answer="Κλασική">3.</div>
+        <div class="dropzone" data-answer="Ρομαντισμός">4.</div>
+        <div class="dropzone" data-answer="Σύγχρονη">5.</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">2. Συμπλήρωση Κενών</div>
+
+        <div class="form-group">
+            <label>Η νότα που διαρκεί 4 χρόνους λέγεται:</label>
+            <input type="text" class="form-control answer" data-answer="ολόκληρο">
+        </div>
+
+        <div class="form-group">
+            <label>Η νότα που διαρκεί 2 χρόνους λέγεται:</label>
+            <input type="text" class="form-control answer" data-answer="μισό">
+        </div>
+
+        <div class="form-group">
+            <label>Ο Mozart συνέθεσε τη «_____ Νυχτερινή Μουσική».</label>
+            <input type="text" class="form-control answer" data-answer="Μικρή">
+        </div>
+
+        <div class="form-group">
+            <label>Οι «Τέσσερις Εποχές» γράφτηκαν από τον:</label>
+            <input type="text" class="form-control answer" data-answer="Vivaldi">
+        </div>
+
+        <div class="form-group">
+            <label>Ο Beethoven έγραψε το διάσημο έργο:</label>
+            <input type="text" class="form-control answer" data-answer="Für Elise">
+        </div>
+
+        <div class="form-group">
+            <label>Η μουσική του Bach ανήκει στην περίοδο:</label>
+            <input type="text" class="form-control answer" data-answer="Μπαρόκ">
+        </div>
+
+        <div class="form-group">
+            <label>Το πολύ γρήγορο tempo ονομάζεται:</label>
+            <input type="text" class="form-control answer" data-answer="Presto">
+        </div>
+
+        <div class="form-group">
+            <label>Το tempo που σημαίνει «αργά» είναι το:</label>
+            <input type="text" class="form-control answer" data-answer="Largo">
+        </div>
+
+        <div class="form-group">
+            <label>Ο Chopin ήταν συνθέτης της περιόδου του:</label>
+            <input type="text" class="form-control answer" data-answer="Ρομαντισμού">
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">3. Αντιστοίχιση Συνθετών και Έργων</div>
+
+        <div class="matching-item">
+            Mozart →
+            <select class="form-control match" data-answer="Μικρή Νυχτερινή Μουσική">
+                <option>Επιλογή</option>
+                <option>Für Elise</option>
+                <option>Μικρή Νυχτερινή Μουσική</option>
+                <option>Οι Τέσσερις Εποχές</option>
+                <option>Το Καλώς Συγκερασμένο Κλειδοκύμβαλο</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Beethoven →
+            <select class="form-control match" data-answer="Für Elise">
+                <option>Επιλογή</option>
+                <option>Für Elise</option>
+                <option>Νυχτερινό</option>
+                <option>Οι Τέσσερις Εποχές</option>
+                <option>Μικρή Νυχτερινή Μουσική</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Vivaldi →
+            <select class="form-control match" data-answer="Οι Τέσσερις Εποχές">
+                <option>Επιλογή</option>
+                <option>Οι Τέσσερις Εποχές</option>
+                <option>Μικρή Νυχτερινή Μουσική</option>
+                <option>Für Elise</option>
+                <option>Νυχτερινό</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Bach →
+            <select class="form-control match" data-answer="Το Καλώς Συγκερασμένο Κλειδοκύμβαλο">
+                <option>Επιλογή</option>
+                <option>Το Καλώς Συγκερασμένο Κλειδοκύμβαλο</option>
+                <option>Οι Τέσσερις Εποχές</option>
+                <option>Für Elise</option>
+                <option>Συμφωνία αρ. 40</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Chopin →
+            <select class="form-control match" data-answer="Νυχτερινό">
+                <option>Επιλογή</option>
+                <option>Νυχτερινό</option>
+                <option>Μικρή Νυχτερινή Μουσική</option>
+                <option>Für Elise</option>
+                <option>Οι Τέσσερις Εποχές</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Beethoven →
+            <select class="form-control match" data-answer="9η Συμφωνία">
+                <option>Επιλογή</option>
+                <option>9η Συμφωνία</option>
+                <option>Νυχτερινό</option>
+                <option>Οι Τέσσερις Εποχές</option>
+                <option>Το Καλώς Συγκερασμένο Κλειδοκύμβαλο</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">4. Συμφωνική Ορχήστρα</div>
+
+        <p>Επίλεξε τα όργανα που ανήκουν σε συμφωνική ορχήστρα.</p>
+
+        <div class="instrument" data-correct="true">Βιολί</div>
+        <div class="instrument" data-correct="true">Τσέλο</div>
+        <div class="instrument" data-correct="true">Όμποε</div>
+        <div class="instrument" data-correct="false">Μπουζούκι</div>
+        <div class="instrument" data-correct="false">Ηλεκτρική Κιθάρα</div>
+        <div class="instrument" data-correct="true">Φλάουτο</div>
+    
+    <div class="section">
+        <div class="section-title">4B. Κατηγορίες Οργάνων</div>
+
+        <p>
+            Επίλεξε τη σωστή κατηγορία για κάθε μουσικό όργανο.
+        </p>
+
+        <div class="matching-item">
+            Κλαρινέτο →
+            <select class="form-control match" data-answer="Ξύλινα Πνευστά">
+                <option>Επιλογή</option>
+                <option>Έγχορδα</option>
+                <option>Χάλκινα Πνευστά</option>
+                <option>Ξύλινα Πνευστά</option>
+                <option>Κρουστά</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Βιολί →
+            <select class="form-control match" data-answer="Έγχορδα">
+                <option>Επιλογή</option>
+                <option>Έγχορδα</option>
+                <option>Κρουστά</option>
+                <option>Χάλκινα Πνευστά</option>
+                <option>Ξύλινα Πνευστά</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Τρομπέτα →
+            <select class="form-control match" data-answer="Χάλκινα Πνευστά">
+                <option>Επιλογή</option>
+                <option>Χάλκινα Πνευστά</option>
+                <option>Έγχορδα</option>
+                <option>Κρουστά</option>
+                <option>Ξύλινα Πνευστά</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Τύμπανα →
+            <select class="form-control match" data-answer="Κρουστά">
+                <option>Επιλογή</option>
+                <option>Ξύλινα Πνευστά</option>
+                <option>Χάλκινα Πνευστά</option>
+                <option>Έγχορδα</option>
+                <option>Κρουστά</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Φλάουτο →
+            <select class="form-control match" data-answer="Ξύλινα Πνευστά">
+                <option>Επιλογή</option>
+                <option>Ξύλινα Πνευστά</option>
+                <option>Έγχορδα</option>
+                <option>Κρουστά</option>
+                <option>Χάλκινα Πνευστά</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="section">
+        <div class="section-title">5. Tempo</div>
+
+        <div class="matching-item">
+            Allegro
+            <select class="form-control match" data-answer="Γρήγορα">
+                <option>Επιλογή</option>
+                <option>Γρήγορα</option>
+                <option>Αργά</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Largo
+            <select class="form-control match" data-answer="Αργά">
+                <option>Επιλογή</option>
+                <option>Γρήγορα</option>
+                <option>Αργά</option>
+            </select>
+        </div>
+
+        <div class="matching-item">
+            Andante
+            <select class="form-control match" data-answer="Μέτρια">
+                <option>Επιλογή</option>
+                <option>Γρήγορα</option>
+                <option>Αργά</option>
+                <option>Μέτρια</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">6. Δημιουργική Ερώτηση</div>
+
+        <p>Άκου το έργο «Το Πέταγμα της Μέλισσας». Πώς θα περιέγραφες τον χαρακτήρα της μουσικής;</p>
+
+        <textarea class="form-control" rows="5"></textarea>
+    </div>
+
+    <div class="text-center mb-5">
+        <button class="btn btn-dark btn-lg" onclick="checkAnswers()">
+            Υποβολή Απαντήσεων
+        </button>
+    </div>
+
+    <div class="footer">
+        Interactive Music Worksheet • Secondary Education
+    </div>
+
+</div>
+
+<script>
+
+let dragged;
+
+document.querySelectorAll('.timeline-item').forEach(item => {
+
+    item.addEventListener('dragstart', function(e){
+        dragged = this;
+    });
+
+});
+
+document.querySelectorAll('.dropzone').forEach(zone => {
+
+    zone.addEventListener('dragover', function(e){
+        e.preventDefault();
+    });
+
+    zone.addEventListener('drop', function(e){
+        e.preventDefault();
+
+        if(this.children.length === 0){
+            this.appendChild(dragged);
+        }
+    });
+
+});
+
+document.querySelectorAll('.instrument').forEach(item => {
+
+    item.addEventListener('click', function(){
+        this.classList.toggle('selected');
+    });
+
+});
+
+function checkAnswers(){
+
+    let score = 0;
+
+    document.querySelectorAll('.answer').forEach(input => {
+
+        let correct = input.dataset.answer.toLowerCase().trim();
+        let value = input.value.toLowerCase().trim();
+
+        if(value === correct){
+            input.classList.add('correct');
+            input.classList.remove('wrong');
+            score++;
+        }else{
+            input.classList.add('wrong');
+            input.classList.remove('correct');
+        }
+
+    });
+
+    document.querySelectorAll('.match').forEach(select => {
+
+        if(select.value === select.dataset.answer){
+            select.classList.add('correct');
+            select.classList.remove('wrong');
+            score++;
+        }else{
+            select.classList.add('wrong');
+            select.classList.remove('correct');
+        }
+
+    });
+
+    document.querySelectorAll('.dropzone').forEach(zone => {
+
+        if(zone.children.length > 0){
+
+            let answer = zone.dataset.answer;
+            let user = zone.children[0].textContent;
+
+            if(answer === user){
+                zone.classList.add('correct');
+                zone.classList.remove('wrong');
+                score++;
+            }else{
+                zone.classList.add('wrong');
+                zone.classList.remove('correct');
+            }
+
+        }
+    });
+
+    let instrumentCorrect = true;
+
+    document.querySelectorAll('.instrument').forEach(inst => {
+
+        let selected = inst.classList.contains('selected');
+        let correct = inst.dataset.correct === "true";
+
+        if(selected !== correct){
+            instrumentCorrect = false;
+        }
+
+    });
+
+    if(instrumentCorrect){
+        score++;
+    }
+
+    document.getElementById('score').innerText = score;
+
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
+
+}
+
+</script>
+
+</body>
+</html>
